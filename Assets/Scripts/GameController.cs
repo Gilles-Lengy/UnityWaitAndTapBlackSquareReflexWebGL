@@ -73,12 +73,10 @@ public class GameController : MonoBehaviour
             textTimer.text = "Wait...";
         }
 
-        for (int i = 0; i < Input.touchCount; ++i)
+        if (Input.GetMouseButtonDown(0))
         {
 
-            if (Input.GetTouch(i).phase == TouchPhase.Began) {
-
-                Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 if (sprite2Hit.GetComponent<Collider2D>().OverlapPoint(wp))
                 {
                     hitCount++;
@@ -88,7 +86,7 @@ public class GameController : MonoBehaviour
                     timerOn = false;
                     textElapsedTimeTotal.text = elapsedTimeTotal.ToString();
                 }
-                }
+
         }
     }
 
