@@ -103,28 +103,19 @@ public class GameController : MonoBehaviour
             sprite2HitCount++;
             switch (sprite2HitCount) {
                 case 1:
-                    destroyWait = 1F;
+                    destroyWait = 1.2F;
                     break;
                 case 3:
-                    destroyWait = 0.9F;
+                    destroyWait = 1.1F;
                     break;
                 case 6:
-                    destroyWait = 0.8F;
+                    destroyWait = 0.9F;
                     break;
                 case 9:
-                    destroyWait = 0.7F;
+                    destroyWait = 0.88F;
                     break;
                 case 12:
-                    destroyWait = 0.6F;
-                    break;
-                case 15:
-                    destroyWait = 0.5F;
-                    break;
-                case 24:
-                    destroyWait = 0.4F;
-                    break;
-                case 27:
-                    destroyWait = 0.3F;
+                    destroyWait = 0.777F;
                     break;
 
             }
