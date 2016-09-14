@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour
         {
 
             Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (sprite2Hit.GetComponent<Collider2D>().OverlapPoint(wp))
+                if (sprite2Hit != null && sprite2Hit.GetComponent<Collider2D>().OverlapPoint(wp))
                 {
                     hitCount++;
                     setHitText();
@@ -129,7 +129,9 @@ public class GameController : MonoBehaviour
 
             }
             yield return new WaitForSeconds(destroyWait);
+            if (sprite2Hit != null) { 
             Destroy(sprite2Hit);
+            }
             timerOn = false;
             yield return new WaitForSeconds(spawnWait);
         }
