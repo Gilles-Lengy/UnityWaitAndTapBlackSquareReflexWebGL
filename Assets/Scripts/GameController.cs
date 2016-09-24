@@ -131,8 +131,6 @@ public class GameController : MonoBehaviour
         switch (lenghtAfterDelimiter)
         {
             case 7:
-                milliemsElapsedTimeLimit = 3;
-                break;
             case 6:
                 milliemsElapsedTimeLimit = 2;
                 break;
