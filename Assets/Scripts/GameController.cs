@@ -162,12 +162,13 @@ public class GameController : MonoBehaviour
                     dixmilliems = dixmilliems + "0";
                 }
 
+                /*
                 string zero = "00";
                 int lengthZero = zero.Length;
+                */
+                // textElapsedTimeTotal.text = lengthZero.ToString() + " / " +  elapsedTimeTotal.ToString() + " / " + substrings[0] + " / " + substrings[1] + " / " + lenghtAfterDelimiter.ToString() + " / " + seconds + " : " + centiems + " : " + milliems + " : " + dixmilliems;
 
-                textElapsedTimeTotal.text = lengthZero.ToString() + " / " +  elapsedTimeTotal.ToString() + " / " + substrings[0] + " / " + substrings[1] + " / " + lenghtAfterDelimiter.ToString() + " / " + seconds + " : " + centiems + " : " + milliems + " : " + dixmilliems;
-
-
+                textElapsedTimeTotal.text = seconds + " : " + centiems + " : " + milliems + " : " + dixmilliems;
             }
 
         }
