@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour
      private string centiems;
     private string milliems;
     private string dixmilliems;
+    private int milliemsElapsedTimeLimit;
 
 
     private bool timerOn;
@@ -78,6 +79,7 @@ public class GameController : MonoBehaviour
             centiems = (elapsedTime * 100 )%100;
             milliems = (elapsedTime * 1000) % 1000;
 
+
             textTimer.text = "Temps écoulé : "+string.Format ("{0:00}:{1:00}:{2:00}:{3:00}", minutes,seconds,centiems,milliems);
             */
             textTimer.text = elapsedTime.ToString();
@@ -113,21 +115,44 @@ public class GameController : MonoBehaviour
                                 textElapsedTimeTotal.text = string.Format("{ 0:00}:{ 1:00}:{ 2:00}", minutes, seconds, centiems);
 
                 */
-/*
-                minutes = elapsedTimeTotal / 60;
-                seconds = elapsedTimeTotal % 60;
-                centiems = (elapsedTimeTotal * 100) % 100;
-                milliems = (elapsedTimeTotal * 1000) % 1000;
-                */
+                /*
+                                minutes = elapsedTimeTotal / 60;
+                                seconds = elapsedTimeTotal % 60;
+                                centiems = (elapsedTimeTotal * 100) % 100;
+                                milliems = (elapsedTimeTotal * 1000) % 1000;
+                                */
 
                 string value = elapsedTimeTotal.ToString();
                 char delimiter = '.';
                 string[] substrings = value.Split(delimiter);
-                int lenght = substrings[1].Length;
+                int lenghtAfterDelimiter = substrings[1].Length;
+    
                 seconds = substrings[0];
                 centiems = substrings[1].Substring(0,2);
                 milliems = substrings[1].Substring(2,2);
-               dixmilliems = substrings[1].Substring(4, lenght-4);// Lenght-4 because the lenght of the substring depends on the dixmilliems, when a 0 should be present at the end, tere is nothing... So, the lenght is variable...
+
+                switch (lenghtAfterDelimiter)
+                {
+                    case 7:
+                        milliemsElapsedTimeLimit = 3;
+                        break;
+                    case 6:
+                        milliemsElapsedTimeLimit = 2;
+                        break;
+                    case 5:
+                        milliemsElapsedTimeLimit = 1;
+                        break;
+
+                }
+
+                if (lenghtAfterDelimiter == 4)
+                {
+                    dixmilliems = "00";
+                }
+                else {
+                    dixmilliems = substrings[1].Substring(4, milliemsElapsedTimeLimit);// Lenght-4 because the lenght of the substring depends on the dixmilliems, when a 0 should be present at the end, tere is nothing... So, the lenght is variable...
+                }
+                   
 
                 if (seconds.Length < 2) {
                     seconds = "0" + seconds;
@@ -137,7 +162,10 @@ public class GameController : MonoBehaviour
                     dixmilliems = dixmilliems + "0";
                 }
 
-                textElapsedTimeTotal.text = elapsedTimeTotal.ToString() + " / " + substrings[0] + " / " + substrings[1] + " / " + seconds + " : " + centiems + " : " + milliems + " : " + dixmilliems;
+                string zero = "00";
+                int lengthZero = zero.Length;
+
+                textElapsedTimeTotal.text = lengthZero.ToString() + " / " +  elapsedTimeTotal.ToString() + " / " + substrings[0] + " / " + substrings[1] + " / " + lenghtAfterDelimiter.ToString() + " / " + seconds + " : " + centiems + " : " + milliems + " : " + dixmilliems;
 
 
             }
