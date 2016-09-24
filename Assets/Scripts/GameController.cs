@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
         hitCount = 0;
         sprite2HitCount = 0;
         setHitText();
-        textElapsedTimeTotal.text = elapsedTimeTotal.ToString();
+        textElapsedTimeTotal.text = "00 : 00 : 00 : 00";
 
         StartCoroutine(SpawnWaves());
     }
