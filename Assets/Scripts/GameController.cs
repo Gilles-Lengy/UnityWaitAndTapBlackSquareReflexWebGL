@@ -82,8 +82,10 @@ public class GameController : MonoBehaviour
 
 
             textTimer.text = "Temps écoulé : "+string.Format ("{0:00}:{1:00}:{2:00}:{3:00}", minutes,seconds,centiems,milliems);
+
             */
-            textTimer.text = elapsedTime.ToString();
+            
+            textTimer.text = formatTime(elapsedTime);
 
 
         }
