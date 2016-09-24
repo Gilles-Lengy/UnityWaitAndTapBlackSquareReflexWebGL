@@ -105,7 +105,6 @@ public class GameController : MonoBehaviour
                 elapsedTimeTotalFormated =  formatTime(elapsedTimeTotal);
                 textElapsedTimeTotal.text = elapsedTimeTotalFormated;
 
-// IIIIICCCCIIII XXXXXXXXXXXXX
             }
 
         }
@@ -121,21 +120,8 @@ public class GameController : MonoBehaviour
             sprite2Hit = Instantiate(srite2Duplicate, spawnPosition, spawnRotation) as GameObject;
             timerOn = true;
             startTime = Time.time; // on note le startTime
-            sprite2HitCount++;
-            /*
-            switch (sprite2HitCount) {
-                case 7:
-                    destroyWait = 0.9F;
-                    break;
-                case 14:
-                    destroyWait = 0.88F;
-                    break;
-                case 21:
-                    destroyWait = 0.777F;
-                    break;
-
-            }*/
-            destroyWait = 0.9F;
+            sprite2HitCount++;  
+            destroyWait = 0.777F;
             yield return new WaitForSeconds(destroyWait);
             if (sprite2Hit != null) { 
             Destroy(sprite2Hit);
