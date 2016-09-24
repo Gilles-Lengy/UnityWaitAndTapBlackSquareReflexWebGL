@@ -62,29 +62,7 @@ public class GameController : MonoBehaviour
         {
             //le temps écoulé = temps actuel - start time
             elapsedTime = Time.time - startTime;
-
-            //formatage
-            /*
-            minutes = elapsedTime / 60;
-            seconds = elapsedTime % 60;
-            centiems = (elapsedTime * 100) % 100;
-
-
-
-            textTimer.text = elapsedTime.ToString()+ string.Format ("{ 0:00}:{ 1:00}:{ 2:00}",minutes,seconds,centiems);
-            */
-            //formatage
-            /*
-            minutes = elapsedTime / 60;
-            seconds = elapsedTime % 60;
-            centiems = (elapsedTime * 100 )%100;
-            milliems = (elapsedTime * 1000) % 1000;
-
-
-            textTimer.text = "Temps écoulé : "+string.Format ("{0:00}:{1:00}:{2:00}:{3:00}", minutes,seconds,centiems,milliems);
-
-            */
-            
+           
             textTimer.text = formatTime(elapsedTime);
 
 
