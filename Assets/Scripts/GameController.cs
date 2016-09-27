@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public float destroyWait;
     public Text textHitCount;
 
+    private string strHit;
     private string strScore;
     private int sprite2HitCount;
 
@@ -47,6 +48,7 @@ public class GameController : MonoBehaviour
         timerOn = false;
         elapsedTimeTotal= 0F;
         strScore = "Score : ";
+        strHit = "Hit : ";
         hitCount = 0;
         sprite2HitCount = 0;
         setHitText();
@@ -114,7 +116,7 @@ public class GameController : MonoBehaviour
 
     void setHitText()
     {
-        textHitCount.text = strScore + hitCount.ToString();
+        textHitCount.text = strHit + hitCount.ToString();
     }
 
     private string formatTime(float timeToFormat)
