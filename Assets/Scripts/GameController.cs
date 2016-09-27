@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
 
         }
         else {
-            textTimer.text = "Wait...";
+            textTimer.text = "...Wait...";
         }
 
         if (Input.GetMouseButtonDown(0))
