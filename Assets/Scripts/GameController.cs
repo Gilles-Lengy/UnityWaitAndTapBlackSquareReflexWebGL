@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public GameObject srite2Duplicate;
     public Vector2 spawnValues;
     public int hitCount;
+    public int score;
 
     public float startWait;
     public float spawnWait;
