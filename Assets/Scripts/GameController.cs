@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
 public class GameController : MonoBehaviour
 {
     public GameObject srite2Duplicate;
@@ -36,6 +37,8 @@ public class GameController : MonoBehaviour
     private string elapsedTimeTotalFormated;
 
 
+
+
     private bool timerOn;
 
 
@@ -43,6 +46,7 @@ public class GameController : MonoBehaviour
 
 
     private GameObject sprite2Hit;
+
 
     void Start()
     {
@@ -56,6 +60,8 @@ public class GameController : MonoBehaviour
         textElapsedTimeTotal.text = "00 : 00 : 00 : 00";
 
         StartCoroutine(SpawnWaves());
+
+
     }
 
     void Update()
@@ -74,6 +80,7 @@ public class GameController : MonoBehaviour
             textTimer.text = "...Wait...";
         }
 
+
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -91,6 +98,11 @@ public class GameController : MonoBehaviour
             }
 
         }
+        
+    }
+    void OnMouseOver()
+    {
+       
     }
 
     IEnumerator SpawnWaves()
