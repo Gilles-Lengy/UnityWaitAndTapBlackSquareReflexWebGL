@@ -96,12 +96,14 @@ public class GameController : MonoBehaviour
             }
 
         }
-        
+
+
+
+
     }
-    void OnMouseOver()
-    {
-       
-    }
+
+    
+
 
     IEnumerator SpawnWaves()
     {
