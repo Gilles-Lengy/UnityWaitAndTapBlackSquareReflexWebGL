@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public GameObject srite2Duplicate;
     public Vector2 spawnValues;
     public int hitCount;
-    public int score;
+
 
     public float startWait;
     public float spawnWait;
@@ -16,7 +16,6 @@ public class GameController : MonoBehaviour
     public Text textHitCount;
 
     private string strHit;
-    private string strScore;
     private int sprite2HitCount;
 
 
@@ -52,7 +51,6 @@ public class GameController : MonoBehaviour
     {
         timerOn = false;
         elapsedTimeTotal= 0F;
-        strScore = "Score : ";
         strHit = "Hit : ";
         hitCount = 0;
         sprite2HitCount = 0;
