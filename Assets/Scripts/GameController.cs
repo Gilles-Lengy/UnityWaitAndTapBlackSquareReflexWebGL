@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 
 public class GameController : MonoBehaviour
@@ -8,6 +9,8 @@ public class GameController : MonoBehaviour
     public GameObject srite2Duplicate;
     public Vector2 spawnValues;
     public int hitCount;
+    public int spawnCount;
+    public Color colorMissed = new Color(1.0f, 1.0f, 1.0f);
 
 
     public float startWait;
@@ -17,6 +20,7 @@ public class GameController : MonoBehaviour
 
     private string strHit;
     private int sprite2HitCount;
+    private bool sprite2HitHitted;
 
 
     /* Timer */ // http://mafabrique2jeux.fr/blog-fabriquer-jeu-video/20-tutoriels-fr-unity3d/55-timer-unity3d
@@ -50,9 +54,11 @@ public class GameController : MonoBehaviour
     void Start()
     {
         timerOn = false;
-        elapsedTimeTotal= 0F;
+        sprite2HitHitted = false;
+        elapsedTimeTotal = 0F;
         strHit = "Hit : ";
         hitCount = 0;
+        spawnCount = 0;
         sprite2HitCount = 0;
         setHitText();
         textElapsedTimeTotal.text = "00 : 00 : 00 : 00";
@@ -83,12 +89,12 @@ public class GameController : MonoBehaviour
         {
 
             Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (sprite2Hit != null && sprite2Hit.GetComponent<Collider2D>().OverlapPoint(wp))
+                if (sprite2Hit != null && sprite2Hit.GetComponent<Collider2D>().OverlapPoint(wp) && sprite2HitHitted == false)
                 {
                     hitCount++;
                     setHitText();
-                    Destroy(sprite2Hit);
-                    elapsedTimeTotal += elapsedTime;
+                sprite2HitHitted = true;
+             elapsedTimeTotal += elapsedTime;
                     timerOn = false;
                 elapsedTimeTotalFormated =  formatTime(elapsedTimeTotal);
                 textElapsedTimeTotal.text = elapsedTimeTotalFormated;
@@ -113,14 +119,15 @@ public class GameController : MonoBehaviour
                 Vector2 spawnPosition = new Vector2(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y));
                 Quaternion spawnRotation = Quaternion.identity;
             sprite2Hit = Instantiate(srite2Duplicate, spawnPosition, spawnRotation) as GameObject;
+            spawnCount++;
+            sprite2Hit.GetComponent<Renderer>().sortingOrder=spawnCount;
             timerOn = true;
             startTime = Time.time; // on note le startTime
             sprite2HitCount++;  
             destroyWait = 0.777F;
             yield return new WaitForSeconds(destroyWait);
-            if (sprite2Hit != null) { 
-            Destroy(sprite2Hit);
-            }
+            sprite2Hit.GetComponent<Renderer>().material.color = colorMissed;
+            sprite2HitHitted = false;
             timerOn = false;
             yield return new WaitForSeconds(spawnWait);
         }
@@ -184,4 +191,6 @@ public class GameController : MonoBehaviour
 
         return text;
     }
+
+               
 }

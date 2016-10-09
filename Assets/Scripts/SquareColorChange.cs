@@ -4,6 +4,7 @@ using System.Collections;
 public class SquareColorChange : MonoBehaviour {
 
     public Color colorEnter = new Color(1.0f, 1.0f, 1.0f);// Editor !!! . Helpfull -> http://lslwiki.net/lslwiki/wakka.php?wakka=color
+    public Color colorTaped = new Color(1.0f, 1.0f, 1.0f);
     private bool mouseDowned;
 
     public Renderer rend;
@@ -29,7 +30,17 @@ public class SquareColorChange : MonoBehaviour {
     }
     void OnMouseDown()
     {
-        mouseDowned = true;
-        rend.material.color = Color.white;
+        
+        if (!mouseDowned)
+        {
+            mouseDowned = true;
+            rend.material.color = Color.white;
+            Invoke("ToTapedtColor", 0.07F);
+        }
+    }
+
+    void ToTapedtColor()
+    {
+        rend.material.color = colorTaped;
     }
 }
