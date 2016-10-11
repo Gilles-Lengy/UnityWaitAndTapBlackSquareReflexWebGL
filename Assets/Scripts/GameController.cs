@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     public int hitCount;
     public int spawnCount;
     public Color colorMissed = new Color(1.0f, 1.0f, 1.0f);
+    public Color colorTaped = new Color(1.0f, 1.0f, 1.0f);
 
 
     public float startWait;
@@ -90,15 +91,18 @@ public class GameController : MonoBehaviour
         {
 
             Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (sprite2Hit != null && sprite2Hit.GetComponent<Collider2D>().OverlapPoint(wp) && sprite2HitHitted == false)
+                if (sprite2Hit != null && sprite2Hit.GetComponent<Collider2D>().OverlapPoint(wp) && !sprite2HitHitted)
                 {
+
                     hitCount++;
-                    setHitText();
-                sprite2HitHitted = true;
-             elapsedTimeTotal += elapsedTime;
+                    sprite2Hit.GetComponent<Renderer>().material.color = colorTaped;
+                    sprite2HitHitted = true;
+                    setHitText();                
+                    elapsedTimeTotal += elapsedTime;
+
                     timerOn = false;
-                elapsedTimeTotalFormated =  formatTime(elapsedTimeTotal);
-                textElapsedTimeTotal.text = elapsedTimeTotalFormated;
+                    elapsedTimeTotalFormated =  formatTime(elapsedTimeTotal);
+                    textElapsedTimeTotal.text = elapsedTimeTotalFormated;
 
             }
 
@@ -127,9 +131,8 @@ public class GameController : MonoBehaviour
             sprite2HitCount++;  
             destroyWait = 0.777F;
             yield return new WaitForSeconds(destroyWait);
-            scriptSprite2Hit = sprite2Hit.GetComponent<SquareColorChange>();
-            scriptSprite2Hit.mouseDowned = true;
-            sprite2Hit.GetComponent<Renderer>().material.color = colorMissed;
+            Destroy(sprite2Hit);
+    
             sprite2HitHitted = false;
             timerOn = false;
             yield return new WaitForSeconds(spawnWait);
