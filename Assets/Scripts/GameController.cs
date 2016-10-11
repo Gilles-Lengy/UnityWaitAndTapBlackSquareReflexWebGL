@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     private string strHit;
     private int sprite2HitCount;
     private bool sprite2HitHitted;
+    public SquareColorChange scriptSprite2Hit;
 
 
     /* Timer */ // http://mafabrique2jeux.fr/blog-fabriquer-jeu-video/20-tutoriels-fr-unity3d/55-timer-unity3d
@@ -126,6 +127,8 @@ public class GameController : MonoBehaviour
             sprite2HitCount++;  
             destroyWait = 0.777F;
             yield return new WaitForSeconds(destroyWait);
+            scriptSprite2Hit = sprite2Hit.GetComponent<SquareColorChange>();
+            scriptSprite2Hit.mouseDowned = true;
             sprite2Hit.GetComponent<Renderer>().material.color = colorMissed;
             sprite2HitHitted = false;
             timerOn = false;

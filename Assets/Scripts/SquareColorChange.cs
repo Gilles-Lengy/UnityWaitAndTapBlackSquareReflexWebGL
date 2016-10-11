@@ -5,7 +5,7 @@ public class SquareColorChange : MonoBehaviour {
 
     public Color colorEnter = new Color(1.0f, 1.0f, 1.0f);// Editor !!! . Helpfull -> http://lslwiki.net/lslwiki/wakka.php?wakka=color
     public Color colorTaped = new Color(1.0f, 1.0f, 1.0f);
-    private bool mouseDowned;
+    public bool mouseDowned;
 
     public Renderer rend;
     void Start()
